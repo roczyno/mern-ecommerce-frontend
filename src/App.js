@@ -6,11 +6,19 @@ import Login from "./pages/Login";
 import Product from "./pages/product";
 import ProductList from "./pages/ProductList";
 import Register from "./pages/Register";
+import { Routes, Route } from "react-router-dom";
 
 const App = () => {
   return (
     <div>
-      <Product />
+      <Routes>
+        <Route index element={<Home />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/products/:category" element={<ProductList />} />
+        <Route path="/product/:id" element={<Product />} />
+        <Route path="/cart" element={<Cart />} />
+      </Routes>
     </div>
   );
 };
