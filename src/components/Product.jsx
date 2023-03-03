@@ -1,23 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
-
+import { Link, useLocation } from "react-router-dom";
+import axios from "axios";
+import { publicRequest } from "../requestMethods";
 
 const Info = styled.div`
-width: 100%;
-height: 100%;
-position: absolute;
-top: 0;
-left:0;
-background-color: rgba(0,0,0,0.2);
-z-index: 3;
-display: flex;
-justify-content: center;
-align-items: center;
-opacity: 0;
-transition: all ease 0.5s;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: all ease 0.5s;
 `;
 
 const Container = styled.div`
@@ -32,7 +34,7 @@ const Container = styled.div`
   position: relative;
   cursor: pointer;
 
-  &:hover ${Info}{
+  &:hover ${Info} {
     opacity: 1;
   }
 `;
@@ -45,26 +47,26 @@ const Circle = styled.div`
 `;
 const Image = styled.img`
   height: 75%;
- 
+
   z-index: 2;
 `;
 
 const Icons = styled.div`
-width:40px;
-height:40px;
-background-color: white;
-border-radius: 50%;
-display: flex;
-justify-content: center;
-align-items: center;
-margin: 10px;
-cursor: pointer;
-transition: all 0.5s ease;
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  cursor: pointer;
+  transition: all 0.5s ease;
 
-&:hover {
-  background-color: #e9f5f5;
-  transform: scale(1.1);
-}
+  &:hover {
+    background-color: #e9f5f5;
+    transform: scale(1.1);
+  }
 `;
 
 const Product = ({ item }) => {
@@ -77,7 +79,9 @@ const Product = ({ item }) => {
           <ShoppingCartOutlinedIcon />
         </Icons>
         <Icons>
-          <SearchOutlinedIcon />
+          <Link to={`/product/${item._id}`}>
+            <SearchOutlinedIcon />
+          </Link>
         </Icons>
         <Icons>
           <FavoriteBorderOutlinedIcon />
