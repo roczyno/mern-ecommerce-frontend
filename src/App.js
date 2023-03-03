@@ -6,10 +6,10 @@ import Login from "./pages/Login";
 import Product from "./pages/product";
 import ProductList from "./pages/ProductList";
 import Register from "./pages/Register";
-import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
+import Success from "./pages/Success";
 
 const App = () => {
-  // const navigate = useNavigate();
   const user = true;
   const ProtectedRoute = ({ children }) => {
     if (!user) {
@@ -52,6 +52,14 @@ const App = () => {
           element={
             <ProtectedRoute>
               <Cart />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/success"
+          element={
+            <ProtectedRoute>
+              <Success />
             </ProtectedRoute>
           }
         />
