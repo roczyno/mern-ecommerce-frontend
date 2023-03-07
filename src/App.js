@@ -8,9 +8,10 @@ import ProductList from "./pages/ProductList";
 import Register from "./pages/Register";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Success from "./pages/Success";
+import { useSelector } from "react-redux";
 
 const App = () => {
-  const user = true;
+  const user = useSelector((state) => state.user.currentUser);
   const ProtectedRoute = ({ children }) => {
     if (!user) {
       return <Navigate to="/login" />;
@@ -29,8 +30,11 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
+        <Route
+          path="/register"
+          element={user ? <Navigate to="/" /> : <Register />}
+        />
+        <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
         <Route
           path="/products/:category"
           element={
