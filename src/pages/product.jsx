@@ -135,7 +135,7 @@ const Product = () => {
     const getProduct = async () => {
       try {
         const res = await axios.get(
-          `https://shopeasy-5fti.onrender.com/api/products/find/${id}`
+          `https://shopeasy-api.onrender.com//api/products/find/${id}`
         );
         setProduct(res.data);
       } catch (error) {}
