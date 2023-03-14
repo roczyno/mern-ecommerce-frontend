@@ -20,8 +20,8 @@ const Products = ({ cat, filters, sort }) => {
       try {
         const res = await axios.get(
           cat
-            ? `https://shopeasy-api.onrender.com/api/products?category=${cat}`
-            : "https://shopeasy-api.onrender.com/api/products"
+            ? `https://shopeasy-5fti.onrender.com/api/products?category=${cat}`
+            : "https://shopeasy-5fti.onrender.com/api/products"
         );
         setProducts(res.data);
       } catch (err) {}
