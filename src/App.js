@@ -22,7 +22,14 @@ const App = () => {
   return (
     <div>
       <Routes>
-        <Route index element={<Home />} />
+        <Route
+          index
+          element={
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          }
+        />
         <Route
           path="/register"
           element={user ? <Navigate to="/" /> : <Register />}
